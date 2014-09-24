@@ -26,3 +26,11 @@
 *.exe
 *.out
 *.app
+
+# Latex Compiled files
+*.aux
+*.log
+*.pdf
+*.blg
+*.out
+*.bbl

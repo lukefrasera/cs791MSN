@@ -1,0 +1,304 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Image",
+				"ImageType"
+			],
+			[
+				"Im",
+				"ImageType"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "paperreview/wk01/HeatBeat-Driven Medium-Access/HeartbeatDriven.tex",
+			"settings":
+			{
+				"buffer_size": 1250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "paperreview/wk01/HeatBeat-Driven Medium-Access/references.bib",
+			"settings":
+			{
+				"buffer_size": 1212,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/luke/Documents/cs791xmobilesensornetworks/paperreview",
+		"/home/luke/Documents/cs791xmobilesensornetworks/paperreview/wk01",
+		"/home/luke/Documents/cs791xmobilesensornetworks/paperreview/wk01/HeatBeat-Driven Medium-Access"
+	],
+	"file_history":
+	[
+		"/home/luke/Documents/cs674/images/apollonian_gasket.ascii.pgm",
+		"/home/luke/Documents/cs674/include/ReadImageHeader.h",
+		"/home/luke/Documents/cs674/include/image.cpp",
+		"/home/luke/Documents/cs674/include/image.h",
+		"/home/luke/Documents/cs674/CMakeLists.txt",
+		"/home/luke/Documents/cs674/assignment_01/CMakeLists.txt",
+		"/home/luke/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/luke/Documents/cs674/threshold_example/src/Threshold.cpp",
+		"/home/luke/Documents/cs674/threshold_example/CMakeLists.txt",
+		"/home/luke/Documents/slide_cancer_detection/segmentation/CMakeLists.txt",
+		"/home/luke/Documents/slide_cancer_detection/CMakeLists.txt",
+		"/home/luke/Documents/cs674/ReadImage.cpp",
+		"/home/luke/Documents/cs674/include/WriteImage.h",
+		"/home/luke/Documents/cs674/include/ReadImage.h",
+		"/home/luke/Documents/cs674/image.h",
+		"/home/luke/Documents/slide_cancer_detection/segmentation/src/full_svs_segmentation.cpp",
+		"/home/luke/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/luke/Documents/slide_cancer_detection/FindOpenSlide.cmake",
+		"/home/luke/Documents/slide_cancer_detection/debug/segmentation/segment"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"foobar",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"cs674Class"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "paperreview/wk01/HeatBeat-Driven Medium-Access/HeartbeatDriven.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								695,
+								695
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "paperreview/wk01/HeatBeat-Driven Medium-Access/references.bib",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16,
+								16
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/Bibtex.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "mobilesensornetworkpaperreview.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"iamge.h",
+				"include/image.h"
+			],
+			[
+				"image.cpp",
+				"include/image.cpp"
+			],
+			[
+				"image.h",
+				"include/image.h"
+			],
+			[
+				"his",
+				"assignment_01/src/histogram.cpp"
+			],
+			[
+				"imageh",
+				"include/ReadImageHeader.h"
+			],
+			[
+				"full",
+				"segmentation/src/full_svs_segmentation.cpp"
+			],
+			[
+				"ful",
+				"segmentation/src/full_svs_segmentation.cpp"
+			],
+			[
+				"segmenth",
+				"segmentation/src/segmentation.h"
+			],
+			[
+				"segmentation.c",
+				"segmentation/src/segmentation.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/flirtey/pixhawk/src/firmware.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 300.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
