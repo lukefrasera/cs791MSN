@@ -34,3 +34,5 @@
 *.blg
 *.out
 *.bbl
+*.dvi
+*.swp
