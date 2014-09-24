@@ -1,10 +1,11 @@
+%\documentclass[twocolumn]{article}
 \documentclass{article}
 \usepackage{hyperref}
 \usepackage{natbib}
 \usepackage[right=1in,top=1in,left=1in,bottom=1in]{geometry}
 
 \begin{document}
-\title{{\large Review} \\ Heatbeat-Driven Medium-Access Control  for Body Sensor Netoworks}
+\title{{\large Review} \\ Heartbeat-Driven Medium-Access Control for Body Sensor Networks}
 \author{Luke Fraser}
 \date{\today}
 \maketitle
@@ -17,18 +18,29 @@
 \endgroup
 
 % /////////////////////////////////////////////////////////////////////////////////////////////
-\section*{Summary}
+\section*{Paper Overview}
 % WRITE SUMMARY SECTION HERE //////////////////////////////////////////////////////////////////
+In this paper the authors discuss the effects of using a biological heartbeat signal to synchronism a BSN(Body Sensor Network) on power consumption of the BSN. The central idea being that the synchronization step of a network is a key area of wasted power. To avoid the heavy power consumption of standard wireless synchronization steps the proposed H-MAC algorithm uses a persons heartbeat as a clock for the entire BSN. The H-MAC algorithm however does not consider the multi-hop network systems.
+
+It is critical that BSN's have low energy consumption because in many cases BSN's are a host of wireless battery powered medical devices attached to patients. They transmit critical patient information to a control that after analysis can provide early diagnosis for diseases and other medical problems.
+
+The use of MAC(Medium Access Control) algorithms in BSN's is common for their energy consumption constraints and less active network activity. Previous work has be done with MAC to bring the energy consumption down for the entire BSN. S-MAC, T-MAC, and D-MAC were created to solve the problem of idle listening associated with typical MAC algorithms. The S-MAC algorithm allows nodes to communicate in dedicated time slots to prevent collisions. T-MAC improves on S-MAC by adapting to different traffic patterns. D-MAC works on networks with only sensor-to-sink communication. Each of the improved MAC algorithms suffers from the power consumption issues induced by constantly needing to re-synchronize the network. H-MAC solves this problem through a centralized clock signal.
+
+The human heart elicits a rhythmic beat that ranges between 50-150 beats per minute. This rhythm can be sensed throughout the entire human body due to the cardiovascular system. Each pump of the heart transports blood to the entire body. A sensor placed on or in the body can sense the effects of each pump of the heart. This results in different signals depending on the sensor used, but each of the events will occur around the same time. There is variance in the time the signal is received by a device due to propagation delay of blood flow through the body. However, the window of the delay is small. This makes the heart a reliable clock to synchronize a BSN to without the use of a wireless network. This is the premise H-MAC uses to insure collision free communication between the control-node and other devices in a star-network.
+
+Each sensor is responsible for detecting and counting each heartbeat to remain in sync with other devices. The detection is done through signal processing of a given signal with heart beat information within it. The detection schema used has a 99.9\% accurate detection rate. The mechanism can detect the peaks signaling a heart beat signal. The network however will not detect the heartbeat at exactly the same time due to the propagation of blood throughout the body. To counter this issue a window of no communication is used to prevent collision within the system until each node receives the heart signal. During this time the control-node is able to send control signals that don't rely on each node being synchronized. In the event that a sensor becomes out-of-sync it is able to re-synchronize with the main control-node through the control signals sent periodically through the system.
 
 % /////////////////////////////////////////////////////////////////////////////////////////////
 \section*{Strengths}
 % DISCUSS THE STRENGTHS OF THE PAPER //////////////////////////////////////////////////////////
-
+The central contribution of this paper is the use of a heart beat signal as a means of synchronization for a BSN network. This prevents sensors in the network from needing to wirelessly communicate to achieve synchronization. Even with the propagation delay and the dynamic tempo changes of the heartbeat signal the H-MAC algorithm is able to maintain reliable synchronization of the network. With the H-MAC algorithm a 15\% power consumption reduction is achieved over other augmented MAC algorithms. As well the paper is well written and provides a clear understanding of the proposed algorithm.
 % /////////////////////////////////////////////////////////////////////////////////////////////
 \section*{Critique}
 % DISCUSS THE CRITIQUE OF THE PAPER ///////////////////////////////////////////////////////////
-
+The requirements of heart beat detection on every sensor in the BSN introduces a new source of computation for any sensor in the network. This requires each node to be modified to understand and detect each heartbeat in the system. This may introduce more power draw on a given sensor than previously considered. It would have been nice to see real-world results rather than a simulation of the algorithm. The theoretical 15\% improvement has not been validated in practice. The limitation to only star-networks will add additional power requirements and spatial constraints on each node of the network. Each sensor in the system will have to have the power and signal strength to transmit and receive signals from the central node. This presents spatial constraints on weaker sensors that may not be able to communicate further from the central node. Additionally each sensor in the BSN will need to receive heartbeat information. This is generally available to a medical BSN as was described in the paper, however this assumption does not generalize well to all BSN's.
 % /////////////////////////////////////////////////////////////////////////////////////////////
+\section*{Future Work}
+To improve the algorithm work could be done to include a more general network graph that allows for a multi-hop system. This would allow for more general sensor types and sub-networks. With a multi-hop system potentially non-heartbeat detecting sensor could be added to the network and be synchronized by a subnet controller rather than the main control-node. This would prevent every system from needing to be able to detect each heartbeat as well as remove spatial and sensory constraints introduced by H-MAC.
 \cite{5229313}
 
 \end{document}
