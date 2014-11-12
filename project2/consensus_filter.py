@@ -45,18 +45,41 @@ def q_bar_calc(nodes):
   pos_sum[1] = pos_sum[1]/len(nodes)
   return pos_sum
 
-def max_degree(node, neighbors, cell):
-  pass
+def node_sub_pos(a, b):
+  a = a - b
+  return a
+
+def max_degree(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
+  if central:
+    degree = len(neighbors)
+    return (1 - degree * 1.0/len(nodes))
+  return 1.0/len(nodes)
+
+def metropolis(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
+  if central:
+    return (1 - sum([metropolis(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))]))
+  return 1.0/(1 + max(len(neighbors), len(adjacent[adjacent[node_dex][neigh_dex]])))
+
 
 def consensus_filter(weight_func, nodes, adjacencies, cells):
-  print weight_func(nodes[0], [nodes[i] for i in adjacencies[0]], cells[0])
+  print nodes
+  for cell in cells:
+    for l in xrange(100):
+      node_consensus = []
+      for i, node in enumerate(nodes):
+        neighbors = [nodes[j] for j in adjacencies[i]]
+        node_consensus.append(weight_func(node, neighbors, cell, nodes, adjacencies, True, i) * node[2] + sum([weight_func(node, neighbors, cell, nodes, adjacencies, False,i,j)*neighbors[j][2] for j in xrange(len(neighbors))]))
+      for i in xrange(len(nodes)):
+        nodes[i][2] = node_consensus[i]
+    print nodes
 
 def main():
   cell = [.5, .5, 50]
   nodes = generate_random_node_graph(10, 0, 1)
   nodes = [cell_measurement(cell, node, q_bar_calc(nodes)) for node in nodes]
-  print nodes
-  adjacencies = connect_nodes(nodes, .25)
+  adjacencies = connect_nodes(nodes, .5)
+
+  consensus_filter(metropolis, nodes, adjacencies, [cell])
 
 if __name__ == '__main__':
   main()
