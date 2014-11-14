@@ -59,7 +59,25 @@ def metropolis(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neig
   if central:
     return (1 - sum([metropolis(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))]))
   return 1.0/(1 + max(len(neighbors), len(adjacent[adjacent[node_dex][neigh_dex]])))
+def weight_design_1(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
+  if not central: 
+    dist = map(node_sub_pos, node, cell)
+    mag = pow(dist[0], 2) + pow(dist[1], 2)
+    var_central = (mag + 0.01)/2.56
+    dist = map(node_sub_pos, nodes[adjacent[node_dex][neigh_dex]], cell)
+    mag = pow(dist[0], 2) + pow(dist[1], 2)
+    var_neigh = (mag + 0.01)/2.56
+    return (0.001/(var_central + var_neigh))
+  return 1 - sum([weigth_design_1(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))])
 
+
+def weight_design_2(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
+  dist = map(node_sub_pos, node, cell)
+  mag = pow(dist[0], 2) + pow(dist[1], 2)
+  var_central = (mag + 0.01)/2.56
+  if central:
+    return 0.001/var_central
+  return (1-(0.001/var_central)) / len(neighbors)
 
 def consensus_filter(weight_func, nodes, adjacencies, cells):
   print nodes
@@ -79,7 +97,7 @@ def main():
   nodes = [cell_measurement(cell, node, q_bar_calc(nodes)) for node in nodes]
   adjacencies = connect_nodes(nodes, .5)
 
-  consensus_filter(metropolis, nodes, adjacencies, [cell])
+  consensus_filter(weight_design_2, nodes, adjacencies, [cell])
 
 if __name__ == '__main__':
   main()
