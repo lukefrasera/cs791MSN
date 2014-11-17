@@ -15,10 +15,10 @@ def generate_random_node_graph(n, a, b):
 def connect_nodes(nodes, distance):
   adjacent = []
   for i, node in enumerate(nodes):
-    neighbors = [x for x in nodes if x!=node]
+    neighbors = [x for x in xrange(len(nodes)) if x!=i]
     neighbor_list = []
-    for j, neighbor in enumerate(neighbors):
-      dist = sqrt(pow(neighbor[0] - node[0], 2) + pow(neighbor[1] - node[1],2))
+    for j in neighbors:
+      dist = sqrt(pow(nodes[j][0] - node[0], 2) + pow(nodes[j][1] - node[1],2))
       if (dist <= distance):
         neighbor_list.append(j)
 
@@ -79,25 +79,27 @@ def weight_design_2(node, neighbors, cell, nodes, adjacent, central, node_dex=0,
     return 0.001/var_central
   return (1-(0.001/var_central)) / len(neighbors)
 
-def consensus_filter(weight_func, nodes, adjacencies, cells):
-  print nodes
-  for cell in cells:
-    for l in xrange(100):
-      node_consensus = []
-      for i, node in enumerate(nodes):
-        neighbors = [nodes[j] for j in adjacencies[i]]
-        node_consensus.append(weight_func(node, neighbors, cell, nodes, adjacencies, True, i) * node[2] + sum([weight_func(node, neighbors, cell, nodes, adjacencies, False,i,j)*neighbors[j][2] for j in xrange(len(neighbors))]))
-      for i in xrange(len(nodes)):
-        nodes[i][2] = node_consensus[i]
-    print nodes
+def consensus_filter(weight_func, nodes, adjacencies, cell, iterations):
+  result = []
+  for l in xrange(iterations):
+    node_consensus = []
+    for i, node in enumerate(nodes):
+      neighbors = [nodes[j] for j in adjacencies[i]]
+      node_consensus.append(weight_func(node, neighbors, cell, nodes, adjacencies, True, i) * node[2] + sum([weight_func(node, neighbors, cell, nodes, adjacencies, False,i,j)*neighbors[j][2] for j in xrange(len(neighbors))]))
+    for i in xrange(len(nodes)):
+      nodes[i][2] = node_consensus[i]
+    result.append(node_consensus)
+  return result
 
-def main():
-  cell = [.5, .5, 50]
-  nodes = generate_random_node_graph(10, 0, 1)
-  nodes = [cell_measurement(cell, node, q_bar_calc(nodes)) for node in nodes]
-  adjacencies = connect_nodes(nodes, .5)
+# def main():
+#   cell = [.5, .4, 40]
+#   nodes = generate_random_node_graph(10, 0, 1)
+#   nodes = [cell_measurement(cell, node, q_bar_calc(nodes)) for node in nodes]
+#   adjacencies = connect_nodes(nodes, .5)
 
-  consensus_filter(weight_design_2, nodes, adjacencies, [cell])
+#   result = consensus_filter(weight_design_2, nodes, adjacencies, cell, 100)
 
-if __name__ == '__main__':
-  main()
+
+
+# if __name__ == '__main__':
+#   main()
