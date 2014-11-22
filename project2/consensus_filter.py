@@ -8,7 +8,7 @@ def generate_random_node_graph(n, a, b):
     # Generate Random node within range
     x = random.uniform(a, b)
     y = random.uniform(a, b)
-    node = [x,y]
+    node = [x,y, 0.0]
     nodes.append(node)
   return nodes
 
@@ -30,10 +30,10 @@ def cell_measurement(cell, node, q_bar):
   dist_center[0] = node[0] - q_bar[0]
   dist_center[1] = node[1] - q_bar[1]
   dist_center_mag = pow(dist_center[0],2) + pow(dist_center[1],2)
-  variance = (dist_center_mag + 0.01) / 2.56
+  variance = (dist_center_mag + 0.01) / 25.0
 
   measurement = cell[2] + random.gauss(0, variance)
-  node.append(measurement)
+  node[2] = measurement
   return node
 
 def q_bar_calc(nodes):
@@ -59,22 +59,23 @@ def metropolis(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neig
   if central:
     return (1 - sum([metropolis(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))]))
   return 1.0/(1 + max(len(neighbors), len(adjacent[adjacent[node_dex][neigh_dex]])))
+
 def weight_design_1(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
   if not central: 
     dist = map(node_sub_pos, node, cell)
     mag = pow(dist[0], 2) + pow(dist[1], 2)
-    var_central = (mag + 0.01)/2.56
+    var_central = (mag + 0.01)/25.0
     dist = map(node_sub_pos, nodes[adjacent[node_dex][neigh_dex]], cell)
     mag = pow(dist[0], 2) + pow(dist[1], 2)
-    var_neigh = (mag + 0.01)/2.56
+    var_neigh = (mag + 0.01)/25.0
     return (0.001/(var_central + var_neigh))
-  return 1 - sum([weigth_design_1(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))])
+  return 1 - sum([weight_design_1(node, neighbors, cell, nodes, adjacent, False, node_dex, i) for i in xrange(len(neighbors))])
 
 
 def weight_design_2(node, neighbors, cell, nodes, adjacent, central, node_dex=0, neigh_dex=0):
   dist = map(node_sub_pos, node, cell)
   mag = pow(dist[0], 2) + pow(dist[1], 2)
-  var_central = (mag + 0.01)/2.56
+  var_central = (mag + 0.01)/25.0
   if central:
     return 0.001/var_central
   return (1-(0.001/var_central)) / len(neighbors)

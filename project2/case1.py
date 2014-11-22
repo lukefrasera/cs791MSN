@@ -15,7 +15,7 @@ def main(argv):
   # Calculate average
   average = sum([node[2] for node in nodes])/float(len(nodes))
   adjacencies = connect_nodes(nodes, .5)
-  result = consensus_filter(max_degree, nodes, adjacencies, cell, iterations)
+  result = consensus_filter(metropolis, nodes, adjacencies, cell, iterations)
 
 
   print average
